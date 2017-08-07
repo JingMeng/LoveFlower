@@ -52,7 +52,6 @@ public class LoveLayout extends RelativeLayout {
         mImageRes = new int[]{R.mipmap.pl_blue,R.mipmap.pl_red,R.mipmap.pl_yellow};
         mInterpolator = new Interpolator[]{new AccelerateDecelerateInterpolator()
         ,new AccelerateInterpolator() , new DecelerateInterpolator() , new LinearInterpolator(),};
-        //TODO 获取图片的宽高
         Drawable drawable = ContextCompat.getDrawable(context, mImageRes[0]);
         mDrawableWidth = drawable.getIntrinsicWidth() ;
         mDrawableHeight = drawable.getIntrinsicHeight() ;
@@ -105,7 +104,7 @@ public class LoveLayout extends RelativeLayout {
     }
 
     private Animator getBezierAnimator(final ImageView iv) {
-        PointF point0 = new PointF(mWidth/2 - mDrawableWidth/2,mHeight - mDrawableHeight/2) ;
+        PointF point0 = new PointF(mWidth/2 - mDrawableWidth/2,mHeight - mDrawableHeight) ;
         //的Y值一定要大于p1的y
         PointF point1 = getPoint(1) ;
         PointF point2 = getPoint(2) ;
@@ -130,6 +129,6 @@ public class LoveLayout extends RelativeLayout {
     }
 
     public PointF getPoint(int index) {
-        return new PointF(mRandom.nextInt(mWidth) - mDrawableWidth ,mRandom.nextInt(mHeight/2)+(index-1)*(mHeight/2));
+        return new PointF(mRandom.nextInt(mWidth) - mDrawableWidth,mRandom.nextInt(mHeight/2)+(index-1)*(mHeight/2));
     }
 }
